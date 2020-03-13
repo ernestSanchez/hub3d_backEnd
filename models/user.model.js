@@ -37,9 +37,9 @@ const userSchema = new mongoose.Schema({
     "habilidad": [{
         require: true,
         type: types.String,
-        enum: ["rigger","modeller","animador","concept","concept-Artist"]
+        enum: ["rigger","modeller","animador","concept-Artist"]
     }],
-})
+});
 
 
-module.exports = mongoose.model("user",userSchema)
+module.exports = mongoose.model("user",userSchema);

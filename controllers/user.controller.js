@@ -79,7 +79,7 @@ exports.updateUser = (req, res) => {
 
 }
 
-exports.removedUser = (req, res) => {
+exports.removeUser = (req, res) => {
     const id = req.params.id;
     console.log(id)
     authController.checkToken(
