@@ -22,7 +22,7 @@ exports.uploadArchives = (req, res) => {
 
         cloudinary.uploader.upload(
             filePath,
-            { pubic_id: `api/${fileRandome}`, tags: '....' },
+            { public_id: `hub3dArchives/${fileRandome}`},
             (error, imagen) => {
                 if (error) throw error;
                 fs.unlinkSync(filePath);

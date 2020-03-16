@@ -31,15 +31,25 @@ const userSchema = new mongoose.Schema({
     },
     "secondname": {
         type: types.String,
-        min:5,
-        max:50
+        min: 5,
+        max: 50
     },
     "habilidad": [{
         require: true,
         type: types.String,
-        enum: ["rigger","modeller","animador","concept-Artist"]
+        enum: ["rigger", "modeller", "animador", "concept-Artist"]
     }],
+    "visitas": {
+        require: true,
+        type: types.String,
+        min: 0
+    },
+    "lols": {
+        require: true,
+        type: types.String,
+        min: 0
+    },
 });
 
 
-module.exports = mongoose.model("user",userSchema);
+module.exports = mongoose.model("user", userSchema);

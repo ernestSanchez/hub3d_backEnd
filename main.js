@@ -9,6 +9,7 @@ const controllerColaboration = require('./controllers/colaboration.controller');
 
 const server = express();
 
+server.use(express.static('web'));
 server.use(bodyParser.json());
 server.use(cookieparser());
 

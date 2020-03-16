@@ -32,6 +32,16 @@ const proyectSchema = new mongoose.Schema({
         type: types.ObjectId,
         ref: 'user',
     }],
+    "visitas": {
+        require: true,
+        type: types.String,
+        min: 0
+    },
+    "lols": {
+        require: true,
+        type: types.String,
+        min: 0
+    },
 });
 
 module.exports = mongoose.model("proyect", proyectSchema);
