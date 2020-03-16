@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const types = mongoose.Schema.Types
 
 const proyectSchema = new mongoose.Schema({
-    "_id":{
+    "_id": {
         type: types.ObjectId,
         require: true,
     },
-    "nombre":{
+    "nombre": {
         type: types.String,
         require: true,
         min: 3,
@@ -16,13 +16,22 @@ const proyectSchema = new mongoose.Schema({
     "categoria": [{
         require: true,
         type: types.String,
-        enum: ["rig","model","animacion","concept"]
+        enum: ["rig", "model", "animacion", "concept"]
     }],
-    "requierimiento":[{
+    "requierimiento": [{
         require: true,
         type: types.String,
-        enum: ["rigger","modeller","animador"]
+        enum: ["rigger", "modeller", "animador"]
+    }],
+    "tipo": [{
+        require: true,
+        type: types.String,
+        enum: ["character", "prop"]
+    }],
+    "colaboration": [{
+        type: types.ObjectId,
+        ref: 'user',
     }],
 });
 
-module.exports = mongoose.model("proyect",proyectSchema);
+module.exports = mongoose.model("proyect", proyectSchema);

@@ -4,6 +4,8 @@ const controllerUser = require('./controllers/user.controller');
 const cookieparser = require('cookie-parser');
 const authController = require('./controllers/auth.controller')
 const controllerProyect = require('./controllers/proyect.controller');
+const controllerArchive = require('./controllers/archive.controller');
+const controllerColaboration = require('./controllers/colaboration.controller');
 
 const server = express();
 
@@ -22,6 +24,11 @@ server.get('/proyects',controllerProyect.allProyects);
 server.get('/proyect/:id',controllerProyect.getProyect);
 server.put('/modifyProyect',controllerProyect.modifyProyect);
 server.delete('/deleteProyect/:id',controllerProyect.removeProyect);
+
+server.post('/upload',controllerArchive.uploadArchives);
+
+server.get('/newColaboration',controllerColaboration.addColaborationUserProyect);
+
 
 server.listen(3000,()=>{
     console.log("server activated >3000<")

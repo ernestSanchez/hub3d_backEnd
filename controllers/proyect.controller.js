@@ -15,6 +15,7 @@ exports.createProyect = (req, res) => {
         "nombre": req.body.nombre,
         "categoria": req.body.categoria,
         "requierimiento": req.body.requierimiento,
+        "tipo":req.body.tipo,
     }
     console.log(data)
     const newProyect = new proyects(data);
@@ -45,6 +46,7 @@ exports.modifyProyect = (req, res) => {
         "nombre": req.body.nombre,
         "categoria": req.body.categoria,
         "requierimiento": req.body.requierimiento,
+        "tipo":req.body.tipo,
     }
     proyects.findByIdAndUpdate(
         req.body._id,
