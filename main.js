@@ -6,12 +6,13 @@ const authController = require('./controllers/auth.controller')
 const controllerProyect = require('./controllers/proyect.controller');
 const controllerArchive = require('./controllers/archive.controller');
 const controllerColaboration = require('./controllers/colaboration.controller');
-
+const cors = require('cors');
 const server = express();
 
 server.use(express.static('web'));
 server.use(bodyParser.json());
 server.use(cookieparser());
+server.use(cors());
 
 server.post('/register',controllerUser.createUser);
 server.get('/users',controllerUser.allUsers);
