@@ -24,12 +24,12 @@ exports.login = (req, res) => {
                     if (error) throw error;
                     if (coincidence === true) {
                         jwt.sign(
-                            { "username": user.username },
+                            { "username": user[0].username },
                             secrets.jwt_clave,
                             (error, token) => {
                                 if (error) throw error;
                                 res.cookie("megazord", token);
-                                res.send({ "succes": "welcome", "token": token })
+                                res.send({ "success": "welcome", "token": token ,_id:user[0]._id })
                             }
                         )
                     } else {
