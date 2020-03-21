@@ -14,26 +14,37 @@ mongoose.connect(secrets.mongo_login, { useNewUrlParser: true, useUnifiedTopolog
 
 
 exports.createUser = (req, res) => {
-
-    bcrypt.hash(req.body.password, 14,
-        (error, hash) => {
+    users.findOne(
+        { username: req.body.username },
+        (error, user) => {
+            console.log(user)
             if (error) throw error;
-            const data = {
-                "username": req.body.username,
-                "name": req.body.name,
-                "secondname": req.body.secondname,
-                "email": req.body.email,
-                "password": hash,
-                "habilidad": req.body.habilidad,
-                "_id": mongoose.Types.ObjectId()
+            if (!user) {
+                bcrypt.hash(req.body.password, 14,
+                    (error, hash) => {
+                        if (error) throw error;
+                        const data = {
+                            "username": req.body.username,
+                            "name": req.body.name,
+                            "secondname": req.body.secondname,
+                            "email": req.body.email,
+                            "password": hash,
+                            "habilidad": req.body.habilidad,
+                            "_id": mongoose.Types.ObjectId()
+                        }
+                        const newUser = new users(data);
+                        newUser.save((error, result) => {
+                            if (error) throw error;
+                            res.send({ "succes": "added new user", "_id": result._id })
+                        })
+                    }
+                )
+            } else {
+                res.send({ "error": "Username already exists", "username": req.body.username })
             }
-            const newUser = new users(data);
-            newUser.save((error, result) => {
-                if (error) throw error;
-                res.send({ "succes": "added new user", "_id": result._id })
-            })
-        }
-    )
+        })
+
+
 }
 
 exports.allUsers = (req, res) => {
@@ -83,11 +94,11 @@ exports.removeUser = (req, res) => {
     const id = req.params.id;
     console.log(id)
     authController.checkToken(
-        req, res, 
+        req, res,
         (req, res) => {
-        users.findByIdAndDelete(id, (error, result) => {
-            if (error) throw error;
-            res.send({ "succes": "user removed" })
+            users.findByIdAndDelete(id, (error, result) => {
+                if (error) throw error;
+                res.send({ "succes": "user removed" })
+            })
         })
-    })
 }
