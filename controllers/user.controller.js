@@ -30,6 +30,9 @@ exports.createUser = (req, res) => {
                             "email": req.body.email,
                             "password": hash,
                             "habilidad": req.body.habilidad,
+                            "status": req.body.status,
+                            "workStatus": req.body.workStatus,
+                            "location": req.body.location,
                             "_id": mongoose.Types.ObjectId()
                         }
                         const newUser = new users(data);
@@ -72,7 +75,10 @@ exports.updateUser = (req, res) => {
                 "name": req.body.name,
                 "secondname": req.body.secondname,
                 "email": req.body.email,
-                "habilidad": req.body.habilidad
+                "habilidad": req.body.habilidad,
+                "status": req.body.status,
+                "workStatus": req.body.workStatus,
+                "location": req.body.location
             }
             users.findByIdAndUpdate(
                 req.body._id,
