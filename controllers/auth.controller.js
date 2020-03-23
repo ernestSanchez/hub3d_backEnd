@@ -17,7 +17,7 @@ exports.login = (req, res) => {
             console.log(user)
             if (error) throw error;
 
-            bcrypt.compare(
+            bcrypt.compare(    
                 req.body.password,
                 user[0].password,
                 (error, coincidence) => {

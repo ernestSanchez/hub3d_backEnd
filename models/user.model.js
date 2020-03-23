@@ -49,6 +49,21 @@ const userSchema = new mongoose.Schema({
         type: types.String,
         min: 0
     },
+    "status": [{
+        require: true,
+        type: types.String,
+        enum: ["student", "professional"]
+    }],
+    "workStatus": [{
+        require: true,
+        type: types.String,
+        enum: ["working", "looking for a job"]
+    }],
+    "location": {
+        type: types.String,
+        min: 3,
+        max: 100
+    },
 });
 
 
