@@ -79,6 +79,7 @@ exports.updateUser = (req, res) => {
                 "status": req.body.status,
                 "workStatus": req.body.workStatus,
                 "location": req.body.location
+          
             }
             users.findByIdAndUpdate(
                 req.body._id,

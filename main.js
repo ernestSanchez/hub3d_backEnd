@@ -6,6 +6,7 @@ const authController = require('./controllers/auth.controller')
 const controllerProyect = require('./controllers/proyect.controller');
 const controllerArchive = require('./controllers/archive.controller');
 const controllerColaboration = require('./controllers/colaboration.controller');
+const controllerExperience = require('./controllers/experience.controller');
 const cors = require('cors');
 const server = express();
 
@@ -26,6 +27,13 @@ server.get('/proyects',controllerProyect.allProyects);
 server.get('/proyect/:id',controllerProyect.getProyect);
 server.put('/modifyProyect',controllerProyect.modifyProyect);
 server.delete('/deleteProyect/:id',controllerProyect.removeProyect);
+
+server.post('/newExperience',controllerExperience.createExperience);
+server.get('/Experiences',controllerExperience.allExperiences);
+server.get('/Experience/:id',controllerExperience.getExperience);
+server.put('/modifyExperience',controllerExperience.modifyExperience);
+server.delete('/deleteExperience/:id',controllerExperience.removeExperience);
+
 
 server.post('/upload',controllerArchive.uploadArchives);
 

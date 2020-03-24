@@ -59,10 +59,10 @@ const userSchema = new mongoose.Schema({
         type: types.String,
         enum: ["working", "looking for a job"]
     }],
-    "location": {
+    "location": [{
         require: true,
         type: types.Array
-    },
+    }],
 });
 
 
