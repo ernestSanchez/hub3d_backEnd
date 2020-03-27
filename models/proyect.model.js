@@ -20,7 +20,7 @@ const proyectSchema = new mongoose.Schema({
     "categoria": [{
         require: true,
         type: types.String,
-        enum: ["rig", "model", "animacion", "concept"]
+        enum: ["rig", "model", "animacion", "concept",""]
     }],
     "requierimiento": [{
         require: true,
@@ -30,7 +30,7 @@ const proyectSchema = new mongoose.Schema({
     "tipo": [{
         require: true,
         type: types.String,
-        enum: ["character", "prop","bg-set","concept-personaje"]
+        enum: ["character", "prop","bg-set","concept-personaje",""]
     }],
     "descripcion": {
         type: types.String,
@@ -38,6 +38,11 @@ const proyectSchema = new mongoose.Schema({
         min: 3,
         max: 250
     },
+    "tipoArchivo": [{
+        require: true,
+        type: types.String,
+        enum: ["obj", "maya","3dmax","blender",""]
+    }],
     "colaboration": [{
         type: types.ObjectId,
         ref: 'user',

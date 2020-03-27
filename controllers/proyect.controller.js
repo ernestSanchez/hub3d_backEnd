@@ -34,6 +34,13 @@ exports.allProyects = (req, res) => {
     })
 }
 
+exports.filterProyects = (req, res) => {
+    proyects.find(req.body,(error, proyects) => {
+        if (error) throw error;
+        res.send(proyects)
+    })
+}
+
 exports.getProyect = (req, res) => {
     const id = req.params.id;
     proyects.findById(id, (error, result) => {

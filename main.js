@@ -23,6 +23,7 @@ server.post('/login',authController.login);
 server.delete('/deleteUser/:id',controllerUser.removeUser);
 
 server.post('/newProyect',controllerProyect.createProyect);
+server.post('/proyects',controllerProyect.filterProyects);
 server.get('/proyects',controllerProyect.allProyects);
 server.get('/proyect/:id',controllerProyect.getProyect);
 server.put('/modifyProyect',controllerProyect.modifyProyect);

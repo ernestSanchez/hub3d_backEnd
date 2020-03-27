@@ -25,6 +25,7 @@ exports.uploadArchives = (req, res) => {
             { public_id: `hub3dArchives/${fileRandome}`},
             (error, imagen) => {
                 if (error) throw error;
+                
                 fs.unlinkSync(filePath);
                 res.send(imagen)
             }
