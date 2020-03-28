@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
     "email": {
         type: types.String,
         require: true,
+        unique: true,
         min: 5,
         max: 250
     },
@@ -63,6 +64,16 @@ const userSchema = new mongoose.Schema({
         require: true,
         type: types.Array
     }],
+    "urlReel": {
+        type: types.String,
+        min: 5,
+        max: 250
+    },
+    "urlImageUser": {
+        type: types.String,
+        min: 5,
+        max: 250
+    },
 });
 
 

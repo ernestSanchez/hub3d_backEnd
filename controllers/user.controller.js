@@ -33,7 +33,9 @@ exports.createUser = (req, res) => {
                             "status": req.body.status,
                             "workStatus": req.body.workStatus,
                             "location": req.body.location,
-                            "_id": mongoose.Types.ObjectId()
+                            "_id": mongoose.Types.ObjectId(),
+                            "urlReel": req.body.urlReel,
+                            "urlImageUser": req.body.urlImageUser
                         }
                         const newUser = new users(data);
                         newUser.save((error, result) => {
@@ -78,7 +80,9 @@ exports.updateUser = (req, res) => {
                 "habilidad": req.body.habilidad,
                 "status": req.body.status,
                 "workStatus": req.body.workStatus,
-                "location": req.body.location
+                "location": req.body.location,
+                "urlReel": req.body.urlReel,
+                "urlImageUser": req.body.urlImageUser
           
             }
             users.findByIdAndUpdate(

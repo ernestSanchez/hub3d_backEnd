@@ -7,6 +7,7 @@ const controllerProyect = require('./controllers/proyect.controller');
 const controllerArchive = require('./controllers/archive.controller');
 const controllerColaboration = require('./controllers/colaboration.controller');
 const controllerExperience = require('./controllers/experience.controller');
+
 const cors = require('cors');
 const server = express();
 
@@ -38,7 +39,10 @@ server.delete('/deleteExperience/:id',controllerExperience.removeExperience);
 
 server.post('/upload',controllerArchive.uploadArchives);
 
-server.get('/newColaboration',controllerColaboration.addColaborationUserProyect);
+server.post('/newColaboration',controllerColaboration.addColaboration);
+server.get('/colaborations',controllerColaboration.allcolaborations);
+server.put('/modifyColaboration',controllerColaboration.modifyColaboration);
+server.delete('/deleteColaboration/:id',controllerColaboration.removeColaboration);
 
 
 server.listen(3000,()=>{
