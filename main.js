@@ -39,9 +39,9 @@ server.delete('/deleteExperience/:id',controllerExperience.removeExperience);
 
 server.post('/upload',controllerArchive.uploadArchives);
 
+
 server.post('/newColaboration',controllerColaboration.addColaboration);
 server.get('/colaborations',controllerColaboration.allcolaborations);
-server.put('/modifyColaboration',controllerColaboration.modifyColaboration);
 server.delete('/deleteColaboration/:id',controllerColaboration.removeColaboration);
 
 

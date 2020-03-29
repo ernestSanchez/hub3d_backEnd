@@ -12,23 +12,19 @@ mongoose.connect(secrets.mongo_login, { useNewUrlParser: true, useUnifiedTopolog
 
 exports.addColaboration = (req, res) => {
     const data = {
-        "_id": req.body._id,
-        "use_id": req.body.use_id,
+        "_id": mongoose.Types.ObjectId(),
+        "user_id": req.body.user_id,
         "proyect_id": req.body.proyect_id,
         "categoria": req.body.categoria,
         "descripcion": req.body.descripcion,
         "tipoArchivo": req.body.tipoArchivo
     }
-    colaborations.findByIdAndUpdate(
-        req.body._id,
-        {
-            $set: data
-        },
-        (error, result) => {
-            if (error) throw error;
-            res.send({ "succes": "add new userColaboration" })
-        }
-    )
+    console.log(data)
+    const newColaboration = new colaborations(data);
+    newColaboration.save((error) => {
+        if (error) throw error;
+        res.send({ "succes": "added new colaboration", "id": data._id })
+    })
 }
 
 exports.allcolaborations = (req, res) => {
@@ -36,27 +32,6 @@ exports.allcolaborations = (req, res) => {
         if (error) throw error;
         res.send(proyects)
     })
-}
-
-exports.modifyColaboration = (req, res) => {
-    const data = {
-        "_id": req.body._id,
-        "use_id": req.body.use_id,
-        "proyect_id": req.body.proyect_id,
-        "categoria": req.body.categoria,
-        "descripcion": req.body.descripcion,
-        "tipoArchivo": req.body.tipoArchivo
-    }
-    colaborations.findByIdAndUpdate(
-        req.body._id,
-        {
-            $set: data
-        },
-        (error, result) => {
-            if (error) throw error;
-            res.send({ "succes": "modified colaboration" })
-        }
-    )
 }
 
 exports.removeColaboration = (req, res) => {

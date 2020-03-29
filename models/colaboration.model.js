@@ -18,7 +18,7 @@ const colaborationtSchema = new mongoose.Schema({
     "categoria": [{
         require: true,
         type: types.String,
-        enum: ["rig", "model", "animacion", "concept",""]
+        enum: ["rigger", "modeller", "animador",""]
     }],
     "descripcion": {
         type: types.String,
