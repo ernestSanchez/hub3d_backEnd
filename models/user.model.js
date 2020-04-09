@@ -65,13 +65,15 @@ const userSchema = new mongoose.Schema({
         type: types.Array
     }],
     "urlReel": {
+        require: true,
         type: types.String,
         min: 5,
         max: 250
     },
     "urlImageUser": {
+        require: true,
         type: types.String,
-        min: 5,
+        min: 0,
         max: 250
     },
 });

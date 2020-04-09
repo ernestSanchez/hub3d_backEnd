@@ -7,8 +7,8 @@ exports.uploadArchives = (req, res) => {
         destination: './uploads'
     });
 
-    const upload = multer({ "storage": storeConfig }).single('myFile');
-
+    const upload = multer({ "storage": storeConfig }).single('image');
+       
     upload(req, res, (error) => {
         if (error) throw error;
         cloudinary.config({
@@ -17,7 +17,7 @@ exports.uploadArchives = (req, res) => {
             "api_secret": "Dy2WryXnZ6MjOnJ_atx1Dt7QsMk"
         })
         const filePath = req.file.path;
-
+       
         const fileRandome = Date.now();
 
         cloudinary.uploader.upload(
